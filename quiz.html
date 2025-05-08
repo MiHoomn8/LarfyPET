@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz do LarfyPET</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --color-primary-100: #ceb9b2;
+      --color-primary-200: #a78b82;
+      --color-primary-300: #8d6f65;
+      --color-primary-400: #644a41;
+      --color-primary-500: #523c35;
+      --color-primary-800: #3c2b25;
+      --color-primary-900: #271c18;
+      --card: #e0c9a6;
+      --accent: #b08b71;
+      --text: #5a3e2b;
+      --btn: #b08b71;
+      --btn-hover: #a07a63;
+      --bg: #f5ebe0;
+      --bg-light-100: #ffffff;
+      --bg-light-200: #e9ddd7;
+      --bg-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+      --font-family-fredoka: "Fredoka", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-family-fredoka);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      margin-bottom: 16px;
+}
+
+    .container {
+      position: relative;
+      width: 360px;
+      height: 700px;
+      padding: 10px;
+      background-color: var(--bg-light-100);
+      border-radius: 8px;
+      box-shadow: var(--bg-box-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+}
+
+
+    .header-bar {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .header-bar i {
+      color: var(--color-primary-400);
+      position: absolute;
+      right: 10px;
+      top: 69%;
+      cursor: pointer;
+}
+
+    h1 {
+      color: var(--color-primary-400);
+      font-size: 25px;
+      padding: 25px 0px 0px 0px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .step {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .options {
+      text-align: left;
+      margin: 15px 0;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    button {
+      background: var(--btn);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 10px 5px;
+    }
+
+    button:hover {
+      background: var(--btn-hover);
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-bar">
+      <h1>LarfyPET</h1>
+      <i class="fa-solid fa-bars fa-lg"></i>
+    </div>
+
+    <div class="card">
+      <h2>Quiz: Qual raça de cachorro combina com você?</h2>
+      <form id="quizForm">
+        <div class="step active" data-step="1">
+          <p>1. Qual o seu nível de energia?</p>
+          <div class="options">
+            <label><input type="radio" name="q1" value="high" /> Alto</label>
+            <label><input type="radio" name="q1" value="moderate" /> Moderado</label>
+            <label><input type="radio" name="q1" value="low" /> Baixo</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="2">
+          <p>2. Como você prefere passar seu tempo livre?</p>
+          <div class="options">
+            <label><input type="radio" name="q2" value="outdoor" /> Atividades ao ar livre</label>
+            <label><input type="radio" name="q2" value="learning" /> Aprender coisas novas</label>
+            <label><input type="radio" name="q2" value="relax" /> Relaxar em casa</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="3">
+          <p>3. Como você lida com treinamento?</p>
+          <div class="options">
+            <label><input type="radio" name="q3" value="structure" /> Gosto de estrutura e regras</label>
+            <label><input type="radio" name="q3" value="independent" /> Prefiro liberdade</label>
+            <label><input type="radio" name="q3" value="play" /> Adoro jogos e diversão</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="4">
+          <p>4. Quanto você está disposto a cuidar da pelagem?</p>
+          <div class="options">
+            <label><input type="radio" name="q4" value="high" /> Alto cuidado</label>
+            <label><input type="radio" name="q4" value="moderate" /> Moderado</label>
+            <label><input type="radio" name="q4" value="low" /> Mínimo</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="5">
+          <p>5. Quão social você é?</p>
+          <div class="options">
+            <label><input type="radio" name="q5" value="very" /> Muito sociável</label>
+            <label><input type="radio" name="q5" value="some" /> Pouco sociável</label>
+            <label><input type="radio" name="q5" value="alone" /> Prefiro ficar sozinho</label>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" id="prevBtn" style="display: none">Anterior</button>
+          <button type="button" id="nextBtn">Próxima</button>
+        </div>
+      </form>
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll(".step");
+    let currentStep = 0;
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const resultDiv = document.getElementById("result");
+
+    function showStep(n) {
+      steps.forEach((step, i) => step.classList.toggle("active", i === n));
+      prevBtn.style.display = n ? "inline-block" : "none";
+      nextBtn.textContent = n === steps.length - 1 ? "Ver resultado" : "Próxima";
+    }
+
+    function calculateResult() {
+      const data = new FormData(document.getElementById("quizForm"));
+      const scores = {
+        labrador: 0,
+        germanShepherd: 0,
+        poodle: 0,
+        bulldog: 0,
+        beagle: 0,
+      };
+      const map = [
+        {
+          high: ["labrador", 2, "beagle", 1],
+          moderate: ["germanShepherd", 2, "poodle", 1],
+          low: ["bulldog", 2, "poodle", 1],
+        },
+        {
+          outdoor: ["labrador", 2, "germanShepherd", 1],
+          learning: ["poodle", 2, "beagle", 1],
+          relax: ["bulldog", 2, "poodle", 1],
+        },
+        {
+          structure: ["germanShepherd", 2, "bulldog", 1],
+          independent: ["beagle", 2, "labrador", 1],
+          play: ["labrador", 2, "poodle", 1],
+        },
+        {
+          high: ["poodle", 2, "beagle", 1],
+          moderate: ["labrador", 1, "germanShepherd", 1],
+          low: ["bulldog", 2],
+        },
+        {
+          very: ["labrador", 2, "beagle", 1],
+          some: ["germanShepherd", 2, "poodle", 1],
+          alone: ["bulldog", 2],
+        },
+      ];
+
+      for (let i = 1; i <= 5; i++) {
+        const ans = data.get("q" + i);
+        if (ans && map[i - 1][ans]) {
+          const arr = map[i - 1][ans];
+          for (let j = 0; j < arr.length; j += 2) scores[arr[j]] += arr[j + 1];
+        }
+      }
+
+      const best = Object.keys(scores).reduce((a, b) =>
+        scores[a] > scores[b] ? a : b
+      );
+      const names = {
+        labrador: "Labrador Retriever",
+        germanShepherd: "Pastor Alemão",
+        poodle: "Poodle",
+        bulldog: "Bulldog",
+        beagle: "Beagle",
+      };
+      resultDiv.innerText = `A raça que mais combina com você é: ${names[best]}!`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        calculateResult();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>

@@ -1,12 +1,16 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
   
-  body {
-    background-color: #E9DDD7;
-    font-family: "fredoka";
-    margin-top: 20px;
-    margin-bottom: 16px;
-  }
-  
+body {
+  background-color: var(--bg);
+  font-family: "fredoka";
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
