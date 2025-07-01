@@ -1,12 +1,5 @@
-.footer-bar i:hover {
-  color: var(--color-primary-800);
-  transition: 0.3s ease;
-}
-  
-.header-bar i:hover {
-  color: var(--color-primary-800);
-}
+@use "./btn";
+@use "./footer-bar";
+@use "./header-bar";
 
-.btn:active {
-  box-shadow: inset 2px 2px 3px var(--btn-color-box-shadow);
-}
+

@@ -10,5 +10,32 @@
     box-shadow: 0 4px var(--btn-color-box-shadow);
     transition: all 0.2s ease;
 }
+
+.btn-bottom {
+  background-color: var(--bg-light-200);
+  color: var(--color-primary-300);
+  border: 1.5px solid var(--color-primary-200);
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-family: var(--font-family-fredoka);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px var(--color-primary-200); /* sombra 3D suave */
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.btn-group {
+    text-align: center;
+
+    a {
+        font-weight: 600;
+    }
+}
   
-  
+.btn-group.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 25px;
+}

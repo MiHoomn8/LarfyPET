@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz do LarfyPET</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+  
+    :root {
+  --color-primary-100: #ceb9b2;
+  --color-primary-200: #a78b82;
+  --color-primary-300: #8d6f65;
+  --color-primary-400: #644a41;
+  --color-primary-500: #523c35;
+  --color-primary-800: #3c2b25;
+  --color-primary-900: #271c18;
+  --card: #e0c9a6;
+  --accent: #b08b71;
+  --text: #5a3e2b;
+  --btn: #b08b71;
+  --btn-hover: #a07a63;
+  --bg: #f5ebe0;
+  --bg-light-100: #ffffff;
+  --bg-light-200: #e9ddd7;
+  --bg-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  --font-family-fredoka: "Fredoka", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-family-fredoka);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 16px;
+  min-height: 100vh;
+}
+
+/* Tela inicial "Iniciar" */
+.start-screen {
+  width: 360px;
+  height: 700px;
+  background: var(--bg-light-100);
+  border-radius: 8px;
+  box-shadow: var(--bg-box-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-fredoka);
+  color: var(--color-primary-400);
+  text-align: center;
+}
+
+.start-screen h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.start-screen button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  background: var(--btn);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-screen button:hover {
+  background: var(--btn-hover);
+}
+
+.container {
+  position: relative;
+  width: 360px;
+  height: 700px;
+  padding: 10px;
+  background-color: var(--bg-light-100);
+  border-radius: 8px;
+  box-shadow: var(--bg-box-shadow);
+  display: none; /* Escondido até iniciar */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-bar {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.header-bar i {
+  color: var(--color-primary-400);
+  position: absolute;
+  right: 10px;
+  top: 69%;
+  cursor: pointer;
+}
+
+h1 {
+  color: var(--color-primary-400);
+  font-size: 25px;
+  padding: 25px 0 0 0;
+}
+
+.card {
+background: var(--card);
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+padding: 20px;
+width: 100%;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+box-sizing: border-box;
+}
+
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.step {
+  display: none;
+  animation: fadeIn 0.5s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.step.active {
+  display: block;
+}
+
+.options {
+  margin: 15px 0;
+}
+
+.options label {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+}
+
+button {
+  background: var(--btn);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 10px 5px 0 0;
+  user-select: none;
+}
+
+button:hover {
+  background: var(--btn-hover);
+}
+
+#result {
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--color-primary-800);
+  min-height: 50px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    .animal-tab {
+      padding: 20px;
+      box-sizing: border-box;
+      display: none; /* inicia escondido */
+    }
+
+    .animal-tab.active {
+      display: block;
+    }
+
+    .animal-name {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .animal-image {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .animal-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .animal-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-color, #333);
+    }
+  </style>
+</head>
+<body>
+  <div class="start-screen">
+    <h2 id="quizTitle">Bem-vindo ao Quiz LarfyPET!</h2>
+    <button id="startBtn">Iniciar</button>
+  </div>
+
+  <div class="container">
+    <div class="header-bar">
+      <h1>LarfyPET</h1>
+      <i class="fa-solid fa-bars fa-lg"></i>
+    </div>
+
+    <div class="card">
+      <h2>Quiz: Qual raça de gato combina com você?</h2>
+      <form id="quizForm">
+        <div class="step active" data-step="1">
+          <p>1. Como é o espaço onde você mora?</p>
+          <div class="options">
+            <label><input type="radio" name="q1" value="a" /> A) Pequeno, mas tenho prateleiras, nichos e espaço vertical adaptado para o gato</label>
+            <label><input type="radio" name="q1" value="b" /> B) Grande, com bastante espaço e áreas para explorar</label>
+            <label><input type="radio" name="q1" value="c" /> C) Médio, mas sem muitas adaptações</label>
+            <label><input type="radio" name="q1" value="d" /> D) Pequeno, sem adaptações, mas posso melhorar se necessário</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="2">
+          <p>2. Quanto tempo por dia você pode dedicar exclusivamente ao seu gato?</p>
+          <div class="options">
+            <label><input type="radio" name="q2" value="a" /> A) Até 20 minutos por dia</label>
+            <label><input type="radio" name="q2" value="b" /> B) Mais de 1 hora por dia</label>
+            <label><input type="radio" name="q2" value="c" /> C) Depende do dia, varia muito</label>
+            <label><input type="radio" name="q2" value="d" /> D) Tenho tempo livre e gosto de ficar sempre por perto</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="3">
+          <p>3. Você tem crianças em casa ou está procurando um gato dócil e tranquilo?</p>
+          <div class="options">
+            <label><input type="radio" name="q3" value="a" /> A) Sim, quero um gato calmo, ideal para crianças</label>
+            <label><input type="radio" name="q3" value="b" /> B) Sim, mas prefiro um gato brincalhão e animado</label>
+            <label><input type="radio" name="q3" value="c" /> C) Não tenho crianças, mas quero um gato afetuoso</label>
+            <label><input type="radio" name="q3" value="d" /> D) Não, e gosto de um gato mais independente</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="4">
+          <p>4. Você mora em um local frio ou com variações de temperatura acentuadas?</p>
+          <div class="options">
+            <label><input type="radio" name="q4" value="a" /> A) Sim, onde a temperatura pode cair abaixo de 10°C</label>
+            <label><input type="radio" name="q4" value="b" /> B) Não, moro em clima estável, entre 25°C e 30°C</label>
+            <label><input type="radio" name="q4" value="c" /> C) Sim, mas minha casa é aquecida</label>
+            <label><input type="radio" name="q4" value="d" /> D) Às vezes faz frio, mas mantenho o ambiente confortável</label>
+          </div>
+        </div>
+
+        <div class="step" data-step="5">
+          <p>5. Que tipo de personalidade você mais valoriza em um gato?</p>
+          <div class="options">
+            <label><input type="radio" name="q5" value="a" /> A) Calmo, tranquilo e carinhoso</label>
+            <label><input type="radio" name="q5" value="b" /> B) Brincalhão, curioso e afetuoso</label>
+            <label><input type="radio" name="q5" value="c" /> C) Independente, mas sociável</label>
+            <label><input type="radio" name="q5" value="d" /> D) Muito apegado ao tutor, quase como uma “sombra"</label>
+          </div>
+        </div>
+
+        <div class="btn-group" style="text-align:center; margin-top:20px;">
+          <button type="button" id="prevBtn" style="display:none;">Anterior</button>
+          <button type="button" id="nextBtn">Próximo</button>
+        </div>
+
+        <div id="result" style="margin-top: 20px; font-weight: bold; text-align:center; color: var(--color-primary-800); min-height: 50px;"></div>
+      </form>
+
+      <div class="animal-tab" id="animalTab">
+        <h2 class="animal-name">Nome do Animal</h2>
+        <div class="animal-image">
+          <img src="" alt="Imagem do animal" />
+        </div>
+        <p class="animal-description">Descrição do animal aqui.</p>
+      </div>
+
+      
+    </div>
+  </div>
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const container = document.querySelector(".container");
+    const startScreen = document.querySelector(".start-screen");
+    const quizTitle = document.getElementById("quizTitle");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const steps = document.querySelectorAll(".step");
+    const animalTab = document.getElementById("animalTab");
+    const animalName = document.querySelector(".animal-name");
+    const animalImage = document.querySelector(".animal-image img");
+    const animalDesc = document.querySelector(".animal-description");
+  
+    let currentStep = 0;
+  
+    startBtn.addEventListener("click", () => {
+      startScreen.style.display = "none";
+      container.style.display = "flex";
+    });
+  
+    nextBtn.addEventListener("click", () => {
+      if (currentStep < steps.length - 1) {
+        steps[currentStep].classList.remove("active");
+        currentStep++;
+        steps[currentStep].classList.add("active");
+        prevBtn.style.display = "inline-block";
+        if (currentStep === steps.length - 1) {
+          nextBtn.textContent = "Finalizar";
+        }
+      } else {
+        showResult();
+      }
+    });
+  
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        steps[currentStep].classList.remove("active");
+        currentStep--;
+        steps[currentStep].classList.add("active");
+        nextBtn.textContent = "Próximo";
+        if (currentStep === 0) {
+          prevBtn.style.display = "none";
+        }
+      }
+    });
+  
+    function showResult() {
+      steps.forEach(step => step.classList.remove("active"));
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      quizTitle.style.display = "none";
+  
+      const form = document.getElementById("quizForm");
+      const formData = new FormData(form);
+      const answers = [];
+  
+      for (let i = 1; i <= steps.length; i++) {
+        const ans = formData.get("q" + i);
+        answers.push(ans);
+      }
+  
+      const freq = {};
+      answers.forEach(a => {
+        freq[a] = (freq[a] || 0) + 1;
+      });
+  
+      let maxCount = 0;
+      let mostCommon = null;
+      for (const key in freq) {
+        if (freq[key] > maxCount) {
+          maxCount = freq[key];
+          mostCommon = key;
+        }
+      }
+  
+      const animais = {
+        a: {
+          nome: "Persa",
+          imagem: "./img/gato-persa.jpg",
+          descricao: "Gato calmo, tranquilo e carinhoso, ideal para ambientes pequenos e adaptados."
+        },
+        b: {
+          nome: "Siamês",
+          imagem: "./img/gato-siames.jpg",
+          descricao: "Gato brincalhão, curioso e afetuoso, perfeito para quem tem mais tempo para brincar."
+        },
+        c: {
+          nome: "Maine Coon",
+          imagem: "./img/gato-maine-coon.jpg",
+          descricao: "Grande, sociável e muito companheiro, se adapta bem a famílias e espaços amplos."
+        },
+        d: {
+          nome: "Ragdoll",
+          imagem: "./img/gato-ragdoll.jpg",
+          descricao: "Extremamente apegado ao tutor, calmo e dócil. Um verdadeiro 'gato-cachorro'."
+        }
+      };
+  
+      if (animais[mostCommon]) {
+        const escolhido = animais[mostCommon];
+        animalName.textContent = escolhido.nome;
+        animalImage.src = escolhido.imagem;
+        animalImage.alt = `Imagem do gato ${escolhido.nome}`;
+        animalDesc.textContent = escolhido.descricao;
+        animalTab.classList.add("active");
+      } else {
+        document.getElementById("result").textContent = "Responda todas as perguntas para ver o resultado!";
+      }
+    }
+  </script>
+  
+</body>
+</html>
+
+
+-

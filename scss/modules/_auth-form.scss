@@ -1,0 +1,32 @@
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px 16px 0px;
+}
+
+.auth-form input {
+  height: 30px;
+  padding: 3px 10px;
+  font-size: 14px;
+  background-color: var(--bg-light-200);
+  color: var(--color-primary-300);
+  font-weight: 800;
+  border: 1.5px solid var(--color-primary-200);
+  border-radius: 8px;
+  font-family: var(--font-family-nunito);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--color-primary-300);
+  font-weight: 600;
+  font-family: var(--font-family-nunito);
+}
+
+.auth-form input:focus {
+  border-color: var(--color-primary-400);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-200);
+}
+

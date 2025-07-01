@@ -8,11 +8,30 @@ body {
   font-family: "fredoka";
   margin-top: 20px;
   margin-bottom: 16px;
+  height: 100%;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+h1 {
+  color: var(--color-primary-400);
+  font-size: 25px;
+  padding: 15px 0px 0px 0px;
+  text-align: center;
+}
+
+h2 {
+  color: var(--color-primary-400);
+  font-size: 20px;
+  font-family: var(--font-family-nunito);
+  padding-top: 20px;
+}
+
+.section-block {
+  height: 100%;
 }
 
 :root {
@@ -36,7 +55,7 @@ a {
 }
 
 .container {
-  width: 360px;
+  width: min(100%, 360px);
   height: 700px;
   background-color: var(--bg-light-100);
   margin: auto;
@@ -47,6 +66,12 @@ a {
   box-shadow: var(--bg-box-shadow);
 }
 
+@media (max-width: 400px) {
+  .container {
+    width: 90%;
+    height: auto;
+  }
+}
 hr.top-line {
   border: none;
   height: 1px;
@@ -62,37 +87,48 @@ div.feed-midia img {
   border-right: none;
 }
 
-div.home-content {
-  height: 100%;
-}
-
-div.home-h2-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-div.home-h2-img h2 {
-  color: var(--color-primary-400);
-  font-size: 20px;
-  padding-top: 20px;
-}
-div.home-h2-img img {
+.unit-box.home img {
   width: 200px;
   padding: 10px 0 10px;
 }
 
-div.home-btn {
-  text-align: center;
-}
-div.home-btn div {
+.btn-group.initial div {
   padding: 20px;
 }
-div.home-btn div.skip {
+.btn-group.initial div.skip {
   float: right;
 }
-div.home-btn a {
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0px 16px 0px;
+}
+
+.auth-form input {
+  height: 30px;
+  padding: 3px 10px;
+  font-size: 14px;
+  background-color: var(--bg-light-200);
+  color: var(--color-primary-300);
+  font-weight: 800;
+  border: 1.5px solid var(--color-primary-200);
+  border-radius: 8px;
+  font-family: var(--font-family-nunito);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--color-primary-300);
   font-weight: 600;
+  font-family: var(--font-family-nunito);
+}
+
+.auth-form input:focus {
+  border-color: var(--color-primary-400);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-200);
 }
 
 .btn {
@@ -106,6 +142,34 @@ div.home-btn a {
   cursor: pointer;
   box-shadow: 0 4px var(--btn-color-box-shadow);
   transition: all 0.2s ease;
+}
+
+.btn-bottom {
+  background-color: var(--bg-light-200);
+  color: var(--color-primary-300);
+  border: 1.5px solid var(--color-primary-200);
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-family: var(--font-family-fredoka);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px var(--color-primary-200); /* sombra 3D suave */
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.btn-group {
+  text-align: center;
+}
+.btn-group a {
+  font-weight: 600;
+}
+
+.btn-group.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 25px;
 }
 
 .footer-bar {
@@ -133,11 +197,33 @@ div.home-btn a {
   cursor: pointer;
 }
 
-h1 {
-  color: var(--color-primary-400);
-  font-size: 25px;
-  padding: 15px 0px 0px 0px;
-  text-align: center;
+.unit-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.unit-box.auth img {
+  width: 125px;
+  padding: 10px 0 10px;
+}
+
+.btn {
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.btn:active {
+  box-shadow: inset 2px 2px 3px var(--btn-color-box-shadow);
+  top: 2px;
+  left: 1px;
+}
+
+.btn-bottom:active {
+  box-shadow: inset 2px 2px 3px var(--color-primary-200);
+  top: 2px;
+  left: 1px;
 }
 
 .footer-bar i:hover {
@@ -147,10 +233,6 @@ h1 {
 
 .header-bar i:hover {
   color: var(--color-primary-800);
-}
-
-.btn:active {
-  box-shadow: inset 2px 2px 3px var(--btn-color-box-shadow);
 }
 
 /*# sourceMappingURL=style.css.map */

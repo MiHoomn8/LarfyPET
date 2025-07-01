@@ -1,28 +1,11 @@
-div.home-content {
-    height: 100%;
-}
-
-div.home-h2-img { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    h2 {
-        color: var(--color-primary-400);
-        font-size: 20px;
-        padding-top: 20px;
-    }
-
+.unit-box.home { 
     img {
         width: 200px;
         padding: 10px 0 10px;
     }
 }
 
-div.home-btn {
-    text-align: center;
-
+.btn-group.initial {
     div {
         padding: 20px;
     }
@@ -30,9 +13,4 @@ div.home-btn {
     div.skip {
         float: right;
     }
-
-    a {
-        font-weight: 600;
-    }
 }
-    

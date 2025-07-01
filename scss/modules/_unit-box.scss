@@ -1,0 +1,13 @@
+.unit-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.unit-box.auth {
+    img {
+        width: 125px;
+        padding: 10px 0 10px;
+    }
+}

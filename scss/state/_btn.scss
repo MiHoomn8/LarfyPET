@@ -1,0 +1,16 @@
+.btn {
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.btn:active {
+  box-shadow: inset 2px 2px 3px var(--btn-color-box-shadow);
+  top: 2px;
+  left: 1px;
+}
+
+.btn-bottom:active {
+  box-shadow: inset 2px 2px 3px var(--color-primary-200);
+  top: 2px;
+  left: 1px;
+}
