@@ -5,9 +5,13 @@
     flex-direction: column;
 }
 
-.unit-box.auth {
-    img {
-        width: 125px;
-        padding: 10px 0 10px;
+.unit-box.auth img {
+    width: 125px;
+    padding: 10px 0 10px;
+}
+
+@media (max-width: 400px) {
+    .unit-box.auth img {
+        width: 90px;
     }
 }

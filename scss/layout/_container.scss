@@ -1,18 +1,16 @@
 .container {
-  width: min(100%, 360px);
-  height: 700px;
+  width: 100%;
+  max-width: 360px;
+  height: 90vh;
   background-color: var(--bg-light-100);
-  margin: auto;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--bg-box-shadow);
+  box-sizing: border-box;
+  overflow-y: auto;
+  margin: auto; 
 }
 
-@media (max-width: 400px) {
-  .container {
-    width: 90%;
-    height: auto; 
-  }
-}
+

@@ -1,14 +1,25 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+html {
+  overflow-y: scroll; /* reserva espaço pra scrollbar sempre, mesmo se não aparecer */
 }
 
 body {
   background-color: var(--bg);
   font-family: "fredoka";
   margin-top: 20px;
-  margin-bottom: 16px;
-  height: 100%;
+  margin-bottom: 10px;
 }
 
 a {
@@ -55,23 +66,20 @@ h2 {
 }
 
 .container {
-  width: min(100%, 360px);
-  height: 700px;
+  width: 100%;
+  max-width: 360px;
+  height: 90vh;
   background-color: var(--bg-light-100);
-  margin: auto;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--bg-box-shadow);
+  box-sizing: border-box;
+  overflow-y: auto;
+  margin: auto;
 }
 
-@media (max-width: 400px) {
-  .container {
-    width: 90%;
-    height: auto;
-  }
-}
 hr.top-line {
   border: none;
   height: 1px;
@@ -153,7 +161,7 @@ input::placeholder {
   font-family: var(--font-family-fredoka);
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 4px var(--color-primary-200); /* sombra 3D suave */
+  box-shadow: 0 4px var(--color-primary-200);
   transition: all 0.1s ease;
   position: relative;
 }
@@ -209,6 +217,11 @@ input::placeholder {
   padding: 10px 0 10px;
 }
 
+@media (max-width: 400px) {
+  .unit-box.auth img {
+    width: 90px;
+  }
+}
 .btn {
   transition: all 0.1s ease;
   position: relative;
