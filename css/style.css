@@ -18,7 +18,7 @@ html {
 body {
   background-color: var(--bg);
   font-family: "fredoka";
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -115,7 +115,7 @@ div.feed-midia img {
 }
 
 .auth-form input {
-  height: 30px;
+  height: 40px;
   padding: 3px 10px;
   font-size: 14px;
   background-color: var(--bg-light-200);
@@ -213,8 +213,8 @@ input::placeholder {
 }
 
 .unit-box.auth img {
-  width: 125px;
-  padding: 10px 0 10px;
+  width: 100px;
+  padding: 5px 0 7px;
 }
 
 @media (max-width: 400px) {
